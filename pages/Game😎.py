@@ -421,7 +421,7 @@ if sb==q[2]:
                 except Exception as e:
                     st.write("Oops! out of dare visit truth and ")
 
-            with st.expander("get ur true "):
+            with st.expander("get ur truth "):
                 bute=st.button("hit me if all the players have played their 1st round in here and i'll offer you a poliet truth ")
                 try:
                     readyy=[]
@@ -432,7 +432,7 @@ if sb==q[2]:
                         m=player_coun.iloc[0,2]
                         
 
-                        k=f"dare{st.session_state["n"]}"
+                        k=f"true{st.session_state["n"]}"
                         
                         
                     
