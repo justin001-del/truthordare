@@ -274,6 +274,10 @@ if sb==q[1]:
     names=[]
 
     pl=round(st.number_input("how many players are there?",key="play"))
+    if pl==0:
+        st.write("seriously")
+        st.stop()
+    
  
 
     for i in range(1,pl+1):
@@ -297,9 +301,9 @@ if sb==q[1]:
         group_no=random.randint(300000,300599)
 
 
-        how_many=round(st.number_input("how many rouns you want for each player", key="rounds"))
+        how_many=round(st.number_input("how many round you want for each player", key="rounds"))
         st.session_state["how_many"]=how_many
-        dare_many=(round(how_many/2))+1
+        dare_many=(round(how_many/2))+2
         
        
         def call():
@@ -412,43 +416,45 @@ if sb==q[2]:
                     if all(ready)==1:
                         st.write("okay now hit the button ")
                     elif all(ready)!=True:
-                        st.warning("one truth and one truth alternatively to have good or else u may run out of dare soon")
+                        st.warning("one truth and one dare alternatively to have good or else u may run out of dare soon")
 
                 except Exception as e:
                     st.write("Oops! out of dare visit truth and ")
 
-            with st.expander("get ur truth  "):    
-                bute=st.button("hit me if all the players have played their 1st round in here and i'll offer you a poliet question ")
-                
+            with st.expander("get ur true "):
+                bute=st.button("hit me if all the players have played their 1st round in here and i'll offer you a poliet truth ")
                 try:
                     readyy=[]
                     if bute:
                         st.session_state["n"]+=1
                     for player in df_read["players"]:
-                        #player count pulling out rows where player i equal to player 1 or blah
                         player_coun=df_read[df_read["players"]==player]
                         m=player_coun.iloc[0,2]
-                        # getting dares
-                        k1=f"true{st.session_state["n"]}"
-                        l1=player_coun[k1].iloc[0]
-                        #check box and answer
-                        p2=st.checkbox(f"{m}'s truth")
-                        if p2:
-                            st.write(l1)
+                        
+
+                        k=f"dare{st.session_state["n"]}"
+                        
+                        
+                    
+                        l=player_coun[k].iloc[0]
+                        p1=st.checkbox(f"{m}'s truth")
+                        if p1:
+                            st.write(l)
                             st.session_state["statuss"]=1
-                            readyy.append(st.session_state["statuss"])
-                            
+                            ready.append(st.session_state["statuss"])
+                            #st.write(ready) 
                         else:
                             st.session_state["statuss"]=0
-                            readyy.append(st.session_state["statuss"])
-                            
+                            ready.append(st.session_state["statuss"])
+                            #st.write(ready) 
                         st.write(st.session_state["statuss"])
                     if all(readyy)==1:
                         st.write("okay now hit the button ")
                     elif all(readyy)!=True:
-                        st.warning("one truth and one truth alternatively to have good or else u may run out of dare soon")
+                        st.warning("one truth and one dare alternatively to have good or else u may run out of dare soon")
+
                 except Exception as e:
-                    st.write(e)
+                    st.write("Oops! out of truth  ")
             st.markdown(f''' 😊 \n
             For each player {s} dares and {s} truths are assigned \n 
             so no one can escape embarassment''')
