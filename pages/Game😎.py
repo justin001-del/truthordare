@@ -441,12 +441,12 @@ if sb==q[2]:
                         if p1:
                             st.write(l)
                             st.session_state["statuss"]=1
-                            ready.append(st.session_state["statuss"])
-                            #st.write(ready) 
+                            readyy.append(st.session_state["statuss"])
+                           
                         else:
                             st.session_state["statuss"]=0
-                            ready.append(st.session_state["statuss"])
-                            #st.write(ready) 
+                            readyy.append(st.session_state["statuss"])
+                             
                         st.write(st.session_state["statuss"])
                     if all(readyy)==1:
                         st.write("okay now hit the button ")
